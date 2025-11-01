@@ -1,0 +1,13 @@
+class ALmodel():
+    def __init__(self, **kwargs):
+        pass
+    
+    def accq(self, x):
+        pass
+
+    def opt_query(self):
+        pass
+
+    def learn(self, x, y):
+        pass
+
