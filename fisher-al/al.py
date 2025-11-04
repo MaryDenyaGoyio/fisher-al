@@ -21,6 +21,7 @@ from laplace import Laplace
 
 structlog.configure(wrapper_class=structlog.make_filtering_bound_logger(logging.WARNING))
 
+#check 
 # Reproducibility
 np.random.seed(0)
 torch.manual_seed(0)
