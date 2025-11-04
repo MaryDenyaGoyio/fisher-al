@@ -13,10 +13,12 @@ import matplotlib
 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+'''
 from baal.active.dataset import ActiveLearningDataset
 from baal.active.heuristics import BALD
 from baal.bayesian.dropout import patch_module
 from baal.modelwrapper import ModelWrapper, TrainingArgs
+'''
 from laplace import Laplace
 
 structlog.configure(wrapper_class=structlog.make_filtering_bound_logger(logging.WARNING))
@@ -41,7 +43,7 @@ yte_t = torch.from_numpy(yte)
 
 train_set = TensorDataset(Xtr_t, ytr_t)
 print(train_set)
-'''
+
 # Active learning settings
 init_per_class = 5
 query_fraction = 0.3
@@ -293,4 +295,3 @@ if laplace_results['trace']:
     plt.legend()
     plt.tight_layout()
     plt.savefig('al_trace_scores.png', dpi=150)
-'''

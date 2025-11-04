@@ -31,7 +31,6 @@ optimizer = optim.SGD(model.parameters(), lr=1e-2)
 print("Param count:", sum(p.numel() for p in model.parameters()))  # n_params = 650
 
 
-
 # ------------------------ Laplace ------------------------
 import sys
 sys.path.append('/home/marydenya/Downloads/fisher-al/Laplace')
