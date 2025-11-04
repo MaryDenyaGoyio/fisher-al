@@ -40,7 +40,8 @@ Xte_t = torch.from_numpy(Xte)
 yte_t = torch.from_numpy(yte)
 
 train_set = TensorDataset(Xtr_t, ytr_t)
-
+print(train_set)
+'''
 # Active learning settings
 init_per_class = 5
 query_fraction = 0.3
@@ -292,3 +293,4 @@ if laplace_results['trace']:
     plt.legend()
     plt.tight_layout()
     plt.savefig('al_trace_scores.png', dpi=150)
+'''
