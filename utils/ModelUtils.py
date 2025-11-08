@@ -173,3 +173,25 @@ def count_parameters(model, only_trainable=False):
     params = (p for p in model.parameters() if (not only_trainable) or p.requires_grad)
     return sum(p.numel() for p in params)
 
+def save_model(model, save_path='checkpoints/model.pth'):
+    """
+    모델의 state_dict를 저장
+    """
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    torch.save(model.state_dict(), save_path)
+    print(f"✅ Saved model to {save_path}")
+
+def load_model(model, load_path='checkpoints/model.pth'):
+    """
+    저장된 state_dict를 모델에 로드
+    
+    Args:
+        model: 빈 모델 (구조만 정의된 상태)
+        load_path: 저장된 모델 경로
+    
+    Returns:
+        model: 가중치가 로드된 모델
+    """
+    model.load_state_dict(torch.load(load_path))
+    print(f"✅ Loaded model from {load_path}")
+    return model
