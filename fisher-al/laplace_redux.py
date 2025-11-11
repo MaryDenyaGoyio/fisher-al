@@ -4,7 +4,7 @@ import torch
 from laplace import Laplace
 
 
-def I_theta(model, data, each_x: bool = False, val: str = 'GGN', output=['eigval'], apprx: str = 'diag', rank = 100):
+def I_theta_x(model, data, each_x: bool = False, val: str = 'GGN', output=['eigval'], apprx: str = 'diag', rank = 100, precision=0.1):
     """
     EF:     F(θ; D) = ∑^n_i=1 ∇_θ log p(y_i|x_i,θ) ∇_θ log p(y_i|x_i,θ)^T
     GGN:    G(θ; D) = ∑^n_i=1 ∇_θ f(x_i) ∇²_z log p(y_i|z_i) ∇_θ f(x_i)^T
@@ -47,6 +47,7 @@ def I_theta(model, data, each_x: bool = False, val: str = 'GGN', output=['eigval
         hessian_structure=apprx,
         backend=backend,
         backend_kwargs=backend_kwargs,
+        prior_precision=precision,
     )
     la.fit(data, override=True, progress_bar=False)
     model.train(model_mode)

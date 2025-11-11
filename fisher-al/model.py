@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 # Data
 digits = load_digits()
 X, y = digits.data.astype(np.float32), digits.target.astype(np.int64)
-Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.25, stratify=y, random_state=42)
+Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.1, stratify=y, random_state=42) # 1797
 
 scaler = StandardScaler().fit(Xtr)
 Xtr, Xte = scaler.transform(Xtr), scaler.transform(Xte)
@@ -24,6 +24,14 @@ n_samples = len(Xtr_t)
 n_batches = (n_samples + batch_size - 1) // batch_size
 
 # Model
+'''
+m = 4096  # or 8192
+model = nn.Sequential(
+    nn.Linear(64, m, bias=True),
+    nn.ReLU(),
+    nn.Linear(m, 10, bias=True)
+)
+'''
 model = nn.Linear(64, 10)
 criterion = nn.CrossEntropyLoss()                 
 optimizer = optim.SGD(model.parameters(), lr=1e-2)
