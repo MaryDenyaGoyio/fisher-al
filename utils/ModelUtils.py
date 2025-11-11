@@ -139,7 +139,7 @@ def get_models():
 
     return models
 
-def train_model(model, train_set_Labeled, criterion, optimizer, n_epochs=10):
+def train_model(model, train_set_Labeled, criterion, optimizer, n_epochs=5):
     n_epochs_monitor = n_epochs
     for epoch in range(n_epochs_monitor):
         model.train()
